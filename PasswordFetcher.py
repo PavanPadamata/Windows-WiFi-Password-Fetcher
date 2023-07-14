@@ -2,6 +2,18 @@ import subprocess
 import os
 import time
 
+def display_logo():
+    logo = r"""
+   __      __.__   _____.__       .__                         __               
+  /  \    /  \__|_/ ____\__|______|__| ____    ____   _______/  |_  ___________ 
+  \   \/\/   /  \   __\|  \_  __ \  |/    \  / ___\ /  ___/\   __\/  _ \_  __ \
+   \        /|  ||  |  |  ||  | \/  |   |  \/ /_/  >\___ \  |  | (  <_> )  | \/
+    \__/\  / |__||__|  |__||__|  |__|___|  /\___  /____  > |__|  \____/|__|   
+         \/                              \//_____/     \/                   """
+
+    print(logo)
+    print("By Pavan Padamata\n")
+
 def get_wifi_passwords():
     # Run netsh command to get Wi-Fi profiles
     command = "netsh wlan show profile"
@@ -55,6 +67,7 @@ def get_wifi_passwords():
 
 # Main program
 if __name__ == "__main__":
+    display_logo()
     print("Fetching Wi-Fi information...")
     # Add loading animation
     animation = "|/-\\"
