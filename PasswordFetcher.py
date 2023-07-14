@@ -1,6 +1,7 @@
 import subprocess
 import os
 import time
+import webbrowser
 
 def display_logo():
     logo = r"""
@@ -64,6 +65,11 @@ def get_wifi_passwords():
             file.write(f"Password: {password}\n\n")
 
     print(f"Wi-Fi information saved to: {output_file}")
+
+    # Print additional message, wait for 2 seconds, and open GitHub repository link
+    print("Follow me on GitHub and ⭐Star this Repository.")
+    time.sleep(2)
+    webbrowser.open("https://github.com/PavanPadamata")
 
 # Main program
 if __name__ == "__main__":
