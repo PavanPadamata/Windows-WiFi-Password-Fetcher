@@ -11,7 +11,10 @@ def get_wifi_passwords():
     # Extract passwords for each profile
     for profile in profiles:
         profile_command = f'netsh wlan show profile name="{profile}" key=clear'
-        profile_output = subprocess.check_output(profile_command, shell=True).decode("latin-1")
+        try:
+            profile_output = subprocess.check_output(profile_command, shell=True).decode("latin-1")
+        except subprocess.CalledProcessError:
+            continue
 
         # Extract password if available
         password_line = [line.split(":")[1].strip() for line in profile_output.split("\n") if "Key Content" in line]
