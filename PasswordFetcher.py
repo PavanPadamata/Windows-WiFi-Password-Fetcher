@@ -1,5 +1,6 @@
 import subprocess
 import os
+import time
 
 def get_wifi_passwords():
     # Run netsh command to get Wi-Fi profiles
@@ -25,12 +26,25 @@ def get_wifi_passwords():
         # Append Wi-Fi profile and password to the list
         wifi_info.append((profile, password))
 
-    # Create output folder if it doesn't exist
+    # Create output folder with loading animation
+    print("Creating output folder...")
+    animation = "|/-\\"
+    for i in range(20):
+        time.sleep(0.1)
+        print(f"\r{animation[i % len(animation)]}", end="")
+    print("\n")
+
     output_folder = "output"
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    # Write Wi-Fi information to a text file
+    # Save Wi-Fi information to a text file with loading animation
+    print("Saving Wi-Fi information...")
+    for i in range(20):
+        time.sleep(0.1)
+        print(f"\r{animation[i % len(animation)]}", end="")
+    print("\n")
+
     output_file = os.path.join(output_folder, "wifi_info.txt")
     with open(output_file, "w") as file:
         for profile, password in wifi_info:
@@ -41,4 +55,11 @@ def get_wifi_passwords():
 
 # Main program
 if __name__ == "__main__":
+    print("Fetching Wi-Fi information...")
+    # Add loading animation
+    animation = "|/-\\"
+    for i in range(20):
+        time.sleep(0.1)
+        print(f"\r{animation[i % len(animation)]}", end="")
+    print("\n")
     get_wifi_passwords()
